@@ -1,5 +1,5 @@
 #include <vector>
-#include "Activation.h"
+#include "Activation.hpp"
 
 class Layer {
     public:
