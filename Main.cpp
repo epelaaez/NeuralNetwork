@@ -1,4 +1,4 @@
-#include "Layer.hpp"
+#include "NeuralNetwork.hpp"
 
 #include <iostream>
 #include <vector>
@@ -28,5 +28,18 @@ int main() {
     }
     std::cout << "\n";
     
+    NeuralNetwork nn(2, {2, 3, 4}, 2);
+    std::cout << "\nNeural Network with ";
+    std::cout << nn.numberInputNodes << " input nodes, ";
+    std::cout << nn.numberHiddenLayers << " hidden layers, and ";
+    std::cout << nn.numberOutputNodes << " output nodes.\n";
+
+    output = nn.computeOutput({1, 1});
+    std::cout << "\nProduces output: ";
+    for(double i: output) {
+        std::cout << i << " ";
+    }
+    std::cout << "\n";
+
     return 0;
 }
