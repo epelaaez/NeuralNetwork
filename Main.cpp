@@ -41,5 +41,9 @@ int main() {
     }
     std::cout << "\n";
 
+    double cost = nn.costFuncion.calculateCost(output, {0, 1});
+    std::cout << "\nWith cost from {0, 1}: " << cost;
+    std::cout << "\n";
+
     return 0;
 }

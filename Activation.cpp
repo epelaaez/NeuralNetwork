@@ -1,6 +1,5 @@
 #include "Activation.hpp"
 
-#include <vector>
 #include <cmath>
 #include <algorithm>
 

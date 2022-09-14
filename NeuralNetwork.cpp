@@ -2,7 +2,7 @@
 
 #include <vector>
 
-NeuralNetwork::NeuralNetwork(int nInput, std::vector<int> layersSizes, int nOutput, activationTypeOptions activationType) {
+NeuralNetwork::NeuralNetwork(int nInput, std::vector<int> layersSizes, int nOutput, activationTypeOptions activationType, costTypeOptions costType) : costFuncion(costType) {
     numberInputNodes = nInput;
     numberHiddenLayers = layersSizes.size();
     numberOutputNodes = nOutput;
