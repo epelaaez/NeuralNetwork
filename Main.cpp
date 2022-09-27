@@ -1,7 +1,12 @@
 #include "NeuralNetwork.hpp"
 
 #include <iostream>
+#include <string>
 #include <vector>
+#include <fstream>
+#include <sstream>
+
+std::vector<std::vector<double>> fileToArray(std::string);
 
 int main() {
     Layer layer1(2, 3);
@@ -41,9 +46,34 @@ int main() {
     }
     std::cout << "\n";
 
-    double cost = nn.costFuncion.calculateCost(output, {0, 1});
+    double cost = nn.costFunction.calculateCost(output, {0, 1});
     std::cout << "\nWith cost from {0, 1}: " << cost;
     std::cout << "\n";
 
+    std::vector<std::vector<double>> trainingData = fileToArray("data/train.csv");
+    std::vector<std::vector<double>> trainingAnswers = fileToArray("data/train_answers.csv");
+
+    double overallCost = nn.costFromData(trainingData, trainingAnswers);
+    std::cout << "\nCost from training data: " << overallCost;
+
     return 0;
+}
+
+std::vector<std::vector<double>> fileToArray(std::string fileName) {
+    std::fstream file;
+    file.open(fileName, std::fstream::in);
+
+    std::vector<std::vector<double>> data;
+    std::vector<double> row;
+    std::string line, word;
+
+    while(std::getline(file, line)) {
+        row.clear();
+        std::stringstream str(line);
+        while(std::getline(str, word, ','))
+        row.push_back(std::stod(word));
+        data.push_back(row);
+    }
+
+    return data;
 }

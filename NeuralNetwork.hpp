@@ -7,8 +7,9 @@ class NeuralNetwork {
     public:
         int numberInputNodes, numberOutputNodes, numberHiddenLayers;
         std::vector<Layer> hiddenLayers;
-        Cost costFuncion;
+        Cost costFunction;
 
         NeuralNetwork(int, std::vector<int>, int, activationTypeOptions = Sigmoid, costTypeOptions = MeanSquare);
         std::vector<double> computeOutput(std::vector<double>);
+        double costFromData(std::vector<std::vector<double>> , std::vector<std::vector<double>>);
 };
